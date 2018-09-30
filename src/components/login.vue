@@ -42,8 +42,8 @@
 				var that =this;
 				axios.post('/users/login',
 					{
-					    name: this.account,
-					    psw: this.psw
+					    name: that.account,
+					    psw: that.psw
 					  }
 					).then(function(res){
 					console.log(res)
