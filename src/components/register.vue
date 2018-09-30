@@ -1,8 +1,8 @@
 <template>
 	<div class="login">
-		<input class="form-control" id="inputEmail3" placeholder="请输入账号" ><br>
-		<input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码"><br>
-		<input type="email" class="form-control" id="inputemail3" placeholder="请输入邮箱"><br>
+		<input class="form-control" id="inputEmail3" v-model='name1' placeholder="请输入账号" ><br>
+		<input type="password" class="form-control" id="inputPassword3" v-model='psw1' placeholder="请输入密码"><br>
+		<input type="email" class="form-control" id="inputemail3" v-model='eml1' placeholder="请输入邮箱"><br>
 		<button type="submit" class="btn btn-default" @click="login" >注册</button>
 	</div>
 	
@@ -23,14 +23,11 @@
 		methods: {
 			login:function(){
 				var that = this;
-				var name1 = $('#inputEmail3').val()
-				var psw1 = $('#inputPassword3').val()
-				var eml1 = $('#inputemail3').val()
 				axios.post('/users/register',
 					{
-					    name: name1,
-					    psw: psw1,
-					    eml:eml1
+					    name: that.name1.,
+					    psw: that.psw1,
+					    eml:that.eml
 					  }
 					).then(function(res){
 						console.log(res)
