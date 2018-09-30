@@ -11,10 +11,10 @@
 			</router-link>
 		</header>
 		<div class="box">
-			<input class="form-control" id="inputEmail3" placeholder="请输入账号" >
+			<input class="form-control" id="inputEmail3" v-model='account' placeholder="请输入账号" >
 		</div>
 		<div class="box">
-			<input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+			<input type="password" class="form-control" id="inputPassword3" v-model='psw' placeholder="请输入密码">
 		</div>
 		<div class="box" style="background: #fff;    padding: 1em 5em;border: 0">
 			<button type="submit" class="btn btn-default" @click="login">登录</button>
@@ -33,19 +33,17 @@
 		name : 'login',
 		data : function(){
 			return {
-			 	// account : '',
-     //    		password : ''
+			 	account : '',
+        password : ''
 			}
 		},
 		methods: {
 			login:function(){
 				var that =this;
-				var name1 = $('#inputEmail3').val()
-				var psw1 = $('#inputPassword3').val()
 				axios.post('/users/login',
 					{
-					    name: name1,
-					    psw: psw1
+					    name: this.account,
+					    psw: this.psw
 					  }
 					).then(function(res){
 					console.log(res)
